@@ -23,6 +23,13 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+//display forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  forecastElement.innerHTML = "Forecast";
+}
+
 //retrieving live/current temperature information
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -97,6 +104,7 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Houston");
+displayForecast();
 
 //current position button
 function retrievePosition(position) {
