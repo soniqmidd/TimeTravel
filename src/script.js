@@ -20,7 +20,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return timestamp(${day} ${hours}:${minutes});
+  return ${day} ${hours}:${minutes};
 }
 
 function formatDay(timestamp) {
