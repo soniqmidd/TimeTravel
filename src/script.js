@@ -71,7 +71,6 @@ function displayForecast(response) {
 
 //display forecast function
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "ffb1fa2c90cad31d90a4daa88adc6920";
   let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}units=imperial`;
   axios.get(apiUrl).then(displayForecast);
@@ -87,9 +86,9 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  let celsiusTemperature = response.data.main.temp;
+  let fahrenheitTemperature = response.data.main.temp;
 
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
