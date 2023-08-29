@@ -3,11 +3,11 @@ function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
-    hours = `0${hours}`;
+    hours = 0${hours};
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    minutes = `0${minutes}`;
+    minutes = 0${minutes};
   }
 
   let days = [
@@ -20,7 +20,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  return timestamp(${day} ${hours}:${minutes});
 }
 
 function formatDay(timestamp) {
@@ -28,7 +28,7 @@ function formatDay(timestamp) {
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  return days[day];
+  return days[day - 1];
 }
 
 //display forecast
@@ -85,7 +85,6 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
-
   let fahrenheitTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
@@ -96,7 +95,7 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
@@ -137,5 +136,5 @@ function getPosition(event) {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
-let currLocationBtn = document.querySelector("#current-location");
+let currentLocationBtn = document.querySelector("#current-location");
 currLocationBtn.addEventListener("click", getPosition);
